@@ -8,7 +8,7 @@ body{
 }
 
 #spice-table .spice {
-	font: 12px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
+    font-size: 1em;
 	text-shadow: 0 1px rgba(255,255,255,.8);
 	background: #fff;
 	border: 1px solid #ddd;
@@ -47,7 +47,7 @@ body{
 /* --------------- */
 
 #spice-table h3 {
-	font-size: 20px;
+	font-size: 1.25em;
 	font-weight: normal;
 	padding: 20px;
 	margin: -20px -20px 50px -20px;
@@ -89,7 +89,7 @@ body{
 
 #spice-table h3 span {
 	display: block;
-	font: bold 25px/100px Georgia, Serif;
+	font-size: 1.5;
 	color: #777;
 	background: #fff;
 	border: 5px solid #fff;
@@ -124,7 +124,7 @@ body{
 	padding: 8px 20px;
 	margin: 20px 0 0 0;
 	color: #fff;
-	font: bold 14px Arial, Helvetica;
+	font-size: 1.1em;
 	text-transform: uppercase;
 	text-decoration: none;
 	display: inline-block;

@@ -25,6 +25,9 @@ def blends():
 def blend(id):
     return render_template('blend.html', id=id)
 
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
