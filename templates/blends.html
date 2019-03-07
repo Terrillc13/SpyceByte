@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>Blends</h1>
+    <ul class="list-group">
+        {% for blend in blends %}
+            <!--<li class="list-group-item"><a href="article/{{blend.id}}">{{blend.name}}</a></li> -->
+            <li><a href="blend/{{ blend.id }}">{{ blend.name }}</a></li>
+            {{ blend.ingredients }}
+            <br/>
+            <br/>
+        {% endfor %}
+    </ul>
+{% endblock %}
