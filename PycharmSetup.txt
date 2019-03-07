@@ -10,5 +10,6 @@ To set the configuration to execute project:
 3. The configuration type is 'Flask Server'
 4. Target type is 'Script Path'
 5. Target points to the full path of the 'app.py' file.
-6. Python interpreter is Python 3.6
-7. Done!
+6. Python interpreter is 'Python 3.6'
+
+Done!
