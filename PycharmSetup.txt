@@ -1,0 +1,14 @@
+1. Open Pycharm.
+2. Select to open from source control.
+3. Source control is 'Git'
+4. URL is 'https://github.com/Terrillc13/SpyceByte.git'
+5. Open Project.
+
+To set the configuration to execute project:
+1. Go to edit configurations.
+2. Create new configuration.
+3. The configuration type is 'Flask Server'
+4. Target type is 'Script Path'
+5. Target points to the full path of the 'app.py' file.
+6. Python interpreter is Python 3.6
+7. Done!
