@@ -38,7 +38,7 @@ def getFullness(jar):
     return jarFullness
 
 # Test the functionality of the dispense and getFullness methods.
-def test:
+def test():
     while True:
         query = int(input("Dispense (1) or Get Fullness (2)? Exit (0): "))
         if query == 1:
@@ -51,3 +51,4 @@ def test:
         else:
             arduinoSerial.close()
             break
+#test() #Use to test class by itself.
