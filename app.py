@@ -1,6 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
 from data import Blends
-
+from piControl import doDispense, getFullness
 app = Flask(__name__)
 
 Blends = Blends()
@@ -8,11 +8,11 @@ Blends = Blends()
 
 @app.route('/', methods=['GET', 'POST'])
 def webapp():
-
     if request.method == 'POST':
         print(request.form.get('Jar-1-Whole'))
         return
-    return render_template('home.html')
+    return render_template('home.html',
+                           jarFullness1=getFullness(1), jarFullness2=getFullness(2), jarFullness3=getFullness(3))
 
 
 @app.route('/dispense_jar_1')
