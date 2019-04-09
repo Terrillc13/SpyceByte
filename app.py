@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
 from data import Blends
 
 app = Flask(__name__)
@@ -6,9 +6,20 @@ app = Flask(__name__)
 Blends = Blends()
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def webapp():
+
+    if request.method == 'POST':
+        print(request.form.get('Jar-1-Whole'))
+        return
     return render_template('home.html')
+
+
+@app.route('/dispense_jar_1')
+def dispense_jar_1():
+    print(request.form.get('Jar-1-Whole'))
+    print("dispense_jar_1")
+    return 'Stay!'
 
 
 @app.route('/about')
@@ -25,9 +36,11 @@ def blends():
 def blend(id):
     return render_template('blend.html', id=id)
 
+
 @app.route('/settings')
 def settings():
     return render_template('settings.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

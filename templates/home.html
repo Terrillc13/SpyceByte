@@ -1,19 +1,90 @@
 {% extends 'layout.html' %}
 {% block body %}
-    <div class="jumbotron text-center">
-        <div id="spice-table" class="clear">
-            <div class="spice">
-                <h3>Spyce 1<span>0%</span></h3>
-                <a class="view_spice" href="">View Spice</a>
-            </div>
-            <div class="spice">
-                <h3>Spyce 2<span>0%</span></h3>
-                <a class="view_spice" href="">View Spice</a>
-            </div>
-            <div class="spice">
-                <h3>Spyce 3<span>0%</span></h3>
-                <a class="view_spice" href="">View Spice</a>
+    <form method="POST" action="">
+        <div class="jumbotron text-center">
+            <div id="spice-table" class="clear">
+                <div class="spice">
+                    <h3>Spyce 1<span>0%</span></h3>
+                    <select style="width: 40%" name="Jar-1-Whole" id="Jar-1-Whole">
+                        <option value="Jar1-0" selected="selected">0</option>
+                        <option value="Jar1-1">1</option>
+                        <option value="Jar1-2">2</option>
+                        <option value="Jar1-3">3</option>
+                        <option value="Jar1-4">4</option>
+                        <option value="Jar1-5">5</option>
+                        <option value="Jar1-6">6</option>
+                        <option value="Jar1-8">7</option>
+                        <option value="Jar1-9">8</option>
+                        <option value="Jar1-10">9</option>
+                        <option value="Jar1-11">10</option>
+                        <option value="Jar1-12">11</option>
+                        <option value="Jar1-13">12</option>
+                    </select>
+                    <select style="width: 40%"  name="Jar-1-Fraction" id="Jar-1-Fraction">
+                        <option value="Jar1-0-4" selected="selected">0/4</option>
+                        <option value="Jar1-1-4">1/4</option>
+                        <option value="Jar1-2-4">2/4</option>
+                        <option value="Jar1-3-4">3/4</option>
+                    </select>
+                    tsp
+                    </br>
+                    <p><input class="view_spice" type="submit" class="btn btn-primary" value="Submit"></p>
+                </div>
+                <div class="spice">
+                    <h3>Spyce 2<span>0%</span></h3>
+                    <select style="width: 40%" name="Jar-2-Whole" id="Jar-2-Whole">
+                        <option value="Jar2-0" selected="selected">0</option>
+                        <option value="Jar2-1">1</option>
+                        <option value="Jar2-2">2</option>
+                        <option value="Jar2-3">3</option>
+                        <option value="Jar2-4">4</option>
+                        <option value="Jar2-5">5</option>
+                        <option value="Jar2-6">6</option>
+                        <option value="Jar2-8">7</option>
+                        <option value="Jar2-9">8</option>
+                        <option value="Jar2-10">9</option>
+                        <option value="Jar2-11">10</option>
+                        <option value="Jar2-12">11</option>
+                        <option value="Jar2-13">12</option>
+                    </select>
+                    <select style="width: 40%"  name="Jar-1-Fraction" id="Jar-2-Fraction">
+                        <option value="Jar2-0-4" selected="selected">0/4</option>
+                        <option value="Jar2-1-4">1/4</option>
+                        <option value="Jar2-2-4">2/4</option>
+                        <option value="Jar2-3-4">3/4</option>
+                    </select>
+                    tsp
+                    </br>
+                    <a class="view_spice" href="/dispense_jar_2">Dispense</a>
+                </div>
+                <div class="spice">
+                    <h3>Spyce 3<span>0%</span></h3>
+                    <select style="width: 40%" name="Jar-3-Whole" id="Jar-3-Whole">
+                        <option value="Jar3-0" selected="selected">0</option>
+                        <option value="Jar3-1">1</option>
+                        <option value="Jar3-2">2</option>
+                        <option value="Jar3-3">3</option>
+                        <option value="Jar3-4">4</option>
+                        <option value="Jar3-5">5</option>
+                        <option value="Jar3-6">6</option>
+                        <option value="Jar3-8">7</option>
+                        <option value="Jar3-9">8</option>
+                        <option value="Jar3-10">9</option>
+                        <option value="Jar3-11">10</option>
+                        <option value="Jar3-12">11</option>
+                        <option value="Jar3-13">12</option>
+                    </select>
+                    <select style="width: 40%"  name="Jar-1-Fraction" id="Jar-3-Fraction">
+                        <option value="Jar1-0-4" selected="selected">0/4</option>
+                        <option value="Jar1-1-4">1/4</option>
+                        <option value="Jar1-2-4">2/4</option>
+                        <option value="Jar1-3-4">3/4</option>
+                    </select>
+                    tsp
+                    </br>
+                    <p><input class="view_spice" type="submit" class="btn btn-primary" value="Submit"></p>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 {% endblock %}
