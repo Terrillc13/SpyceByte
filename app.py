@@ -1,25 +1,24 @@
-from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
+from flask import Flask, render_template, flash, redirect, url_for, session, request, logging, abort
 from data import Blends
-from piControl import doDispense, getFullness
+import os
+
 app = Flask(__name__)
 
 Blends = Blends()
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def webapp():
-    if request.method == 'POST':
-        print(request.form.get('Jar-1-Whole'))
-        return
     return render_template('home.html',
-                           jarFullness1=getFullness(1), jarFullness2=getFullness(2), jarFullness3=getFullness(3))
+        jarFullness1=100, jarFullness2=100, jarFullness3=100)
 
 
-@app.route('/dispense_jar_1')
+@app.route('/dispense_jar_1', methods=['POST'])
 def dispense_jar_1():
-    print(request.form.get('Jar-1-Whole'))
+    print(request.form['Jar-1-Whole'])
+    print(request.form['Jar-1-Fraction'])
     print("dispense_jar_1")
-    return 'Stay!'
+    return webapp()
 
 
 @app.route('/about')
