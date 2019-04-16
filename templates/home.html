@@ -1,8 +1,8 @@
 {% extends 'layout.html' %}
 {% block body %}
-    <form method="POST" action="/dispense_jar_1">
-        <div class="jumbotron text-center">
-            <div id="spice-table" class="clear">
+    <div class="jumbotron text-center">
+        <div id="spice-table" class="clear">
+            <form method="POST" action="/dispense_jar_1">
                 <div class="spice">
                     <h3>Spyce 1<span>{{ jarFullness1 }}%</span></h3>
                     <select style="width: 40%" name="Jar-1-Whole" id="Jar-1-Whole">
@@ -30,6 +30,8 @@
                     </br>
                     <input type="submit" value="Dispense" class="view_spice">
                 </div>
+            </form>
+            <form method="POST" action="/dispense_jar_2">
                 <div class="spice">
                     <h3>Spyce 2<span>{{ jarFullness2 }}%</span></h3>
                     <select style="width: 40%" name="Jar-2-Whole" id="Jar-2-Whole">
@@ -57,6 +59,8 @@
                     </br>
                     <input type="submit" value="Dispense" class="view_spice">
                 </div>
+            </form>
+            <form method="POST" action="/dispense_jar_3">
                 <div class="spice">
                     <h3>Spyce 3<span>{{ jarFullness3 }}%</span></h3>
                     <select style="width: 40%" name="Jar-3-Whole" id="Jar-3-Whole">
@@ -84,7 +88,7 @@
                     </br>
                     <input type="submit" value="Dispense" class="view_spice">
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
 {% endblock %}
