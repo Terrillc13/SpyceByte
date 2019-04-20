@@ -66,7 +66,7 @@ def blends_save():
     Xml.SubElement(doc, "Spice", name=request.form['Spice_2_Name']).text = request.form['Spice_2_Blend']
     Xml.SubElement(doc, "Spice", name=request.form['Spice_3_Name']).text = request.form['Spice_3_Blend']
     tree = Xml.ElementTree(root)
-    tree.write("spices.Xml")
+    tree.write("spices.xml")
     return blends()
 
 
