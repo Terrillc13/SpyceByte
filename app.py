@@ -19,6 +19,7 @@ def webapp():
 @app.route('/dispense_jar_1', methods=['POST'])
 def dispense_jar_1():
     success = dispense(1, (int(request.form['Jar-1-Whole']) + int(request.form['Jar-1-Fraction'])))
+    print("Dispense Jar 1: %d rotations" % (int(request.form['Jar-1-Whole']) + int(request.form['Jar-1-Fraction'])))
     if not success:
         print("Unable to dispense from Jar 1")
     return webapp()
@@ -27,6 +28,7 @@ def dispense_jar_1():
 @app.route('/dispense_jar_2', methods=['POST'])
 def dispense_jar_2():
     success = dispense(2, (int(request.form['Jar-2-Whole']) + int(request.form['Jar-2-Fraction'])))
+    print("Dispense Jar 2: %d rotations" % (int(request.form['Jar-2-Whole']) + int(request.form['Jar-2-Fraction'])))
     if not success:
         print("Unable to dispense from Jar 2")
     return webapp()
@@ -35,6 +37,7 @@ def dispense_jar_2():
 @app.route('/dispense_jar_3', methods=['POST'])
 def dispense_jar_3():
     success = dispense(3, (int(request.form['Jar-3-Whole']) + int(request.form['Jar-3-Fraction'])))
+    print("Dispense Jar 3: %d rotations" % (int(request.form['Jar-3-Whole']) + int(request.form['Jar-3-Fraction'])))
     if not success:
         print("Unable to dispense from Jar 3")
     return webapp()
@@ -60,6 +63,10 @@ def blends():
 
 @app.route('/blends_save', methods=['POST'])
 def blends_save():
+    print("Saving Spice Blends")
+    print("Name = %s ; Blend = %s" % request.form['Spice_1_Name'], request.form['Spice_1_Blend'])
+    print("Name = %s ; Blend = %s" % request.form['Spice_2_Name'], request.form['Spice_2_Blend'])
+    print("Name = %s ; Blend = %s" % request.form['Spice_3_Name'], request.form['Spice_3_Blend'])
     root = Xml.Element("root")
     doc = Xml.SubElement(root, "doc")
     Xml.SubElement(doc, "Spice", name=request.form['Spice_1_Name']).text = request.form['Spice_1_Blend']
