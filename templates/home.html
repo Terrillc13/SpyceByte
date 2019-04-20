@@ -1,10 +1,10 @@
 {% extends 'layout.html' %}
 {% block body %}
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center" style="background: transparent;">
         <div id="spice-table" class="clear">
             <form method="POST" action="/dispense_jar_1">
                 <div class="spice">
-                    <h3>{{ name1 }}<span>{{ jarFullness1 }}%</span></h3>
+                    <h3>{{ spice_name_1 }}<span>{{ jarFullness1 }}%</span></h3>
                     <select style="width: 40%" name="Jar-1-Whole" id="Jar-1-Whole">
                         <option id="Jar1-0" value="0" selected="selected">0</option>
                         <option id="Jar1-1" value="4">1</option>
@@ -33,7 +33,7 @@
             </form>
             <form method="POST" action="/dispense_jar_2">
                 <div class="spice">
-                    <h3>{{ name2 }}<span>{{ jarFullness2 }}%</span></h3>
+                    <h3>{{ spice_name_2 }}<span>{{ jarFullness2 }}%</span></h3>
                     <select style="width: 40%" name="Jar-2-Whole" id="Jar-2-Whole">
                         <option id="Jar2-0" value="0" selected="selected">0</option>
                         <option id="Jar2-1" value="4">1</option>
@@ -62,7 +62,7 @@
             </form>
             <form method="POST" action="/dispense_jar_3">
                 <div class="spice">
-                    <h3>{{ name3 }}<span>{{ jarFullness3 }}%</span></h3>
+                    <h3>{{ spice_name_3 }}<span>{{ jarFullness3 }}%</span></h3>
                     <select style="width: 40%" name="Jar-3-Whole" id="Jar-3-Whole">
                         <option id="Jar3-0" value="0" selected="selected">0</option>
                         <option id="Jar3-1" value="4">1</option>
