@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="jumbotron text-center" style="background: transparent;">
+        <div id="spice-table" class="clear">
+            <form method="POST" action="/spices_save">
+                <div class="spice">
+                    <h3>Spice 1</h3>
+                    <label style="text-align: left; width: 20%;">Name: </label>
+                    <input type="text" name="Spice_1_Name" value="{{ spice_name_1 }}" style="width: 75%; text-align: center;">
+                    <br/>
+                    <br/>
+                    <label style="text-align: left; width: 20%;">Blend: </label>
+                    <input type="text" name="Spice_1_Blend" value="{{ spice_blend_1 }}" style="width: 75%; text-align: center;">
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="spice">
+                    <h3>Spice 2</h3>
+                    <label style="text-align: left; width: 20%;">Name: </label>
+                    <input type="text" name="Spice_2_Name" value="{{ spice_name_2 }}" style="width: 75%; text-align: center;">
+                    <br/>
+                    <br/>
+                    <label style="text-align: left; width: 20%;">Blend: </label>
+                    <input type="text" name="Spice_2_Blend" value="{{ spice_blend_2 }}" style="width: 75%; text-align: center;">
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="spice">
+                    <h3>Spice 3</h3>
+                    <label style="text-align: left; width: 20%;">Name: </label>
+                    <input type="text" name="Spice_3_Name" value="{{ spice_name_3 }}" style="width: 75%; text-align: center;">
+                    <br/>
+                    <br/>
+                    <label style="text-align: left; width: 20%;">Blend: </label>
+                    <input type="text" name="Spice_3_Blend" value="{{ spice_blend_3 }}" style="width: 75%; text-align: center;">
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+                <br/>
+                <input type="submit" value="Save" class="view_spice">
+            </form>
+        </div>
+    </div>
+{% endblock %}
