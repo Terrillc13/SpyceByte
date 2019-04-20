@@ -12,7 +12,7 @@ try:
     arduino_serial = serial.Serial(arduino_port, rate, timeout=5)
     arduino_serial.reset_input_buffer()
 except Exception as e:
-    print("Unable to connect to the Arduino.")
+    print("Arduino Connection Error")
 
 
 def dispense(jar, amount):
@@ -29,7 +29,7 @@ def dispense(jar, amount):
                 return True
         return False
     except Exception:
-        print("Unable to connect to the Arduino.")
+        print("Arduino Connection Error")
         return False
 
 
@@ -53,7 +53,7 @@ def fullness(jar):
                 break
         return jar_fullness
     except Exception:
-        print("Unable to connect to the Arduino.")
+        print("Arduino Connection Error")
         return 0
 
 
