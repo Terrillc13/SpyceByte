@@ -51,7 +51,7 @@ def fullness(jar):
                 arduino_serial.reset_input_buffer()
                 jar_fullness = float(byte_fullness)
                 break
-        return jar_fullness
+        return int(jar_fullness)
     except Exception:
         print("Arduino Connection Error")
         return 0

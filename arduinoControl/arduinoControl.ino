@@ -3,8 +3,8 @@
 #include <SharpDistSensor.h>
 
 // Constants for the sensor measurements
-#define MEASUREMENTS_DELAY 5 // In milliseconds
-#define MEASUREMENTS_TAKEN 20
+#define MEASUREMENTS_DELAY 2 // In milliseconds
+#define MEASUREMENTS_TAKEN 100
 
 //Constants for the stepper motors
 #define MOTOR_STEPS 200
@@ -136,6 +136,7 @@ void getFullness(int jar) {
   // Total will be divided by measurements used.
   double total = 0;
   int measurementsUsed = 0;
+  float measurementValueUsed = 0;
   // Measurements taken will be stored in an array.
   unsigned int measurements[MEASUREMENTS_TAKEN];
   // Determine which sensor to use. Use sensor 1 by default.
@@ -146,32 +147,57 @@ void getFullness(int jar) {
   else if (jar == 3) {
     sensor = sensor3;
   }
+  unsigned int measurement = 0;
   // Take the measurements with short delays. Store in array.
-  for (int i = 0; i < MEASUREMENTS_TAKEN; i++) {
+  while (measurementsUsed < MEASUREMENTS_TAKEN) {
     // Get distance from sensor and store in array.
-    measurements[i] = sensor.getDist();
-    //Serial.println(measurements[i]);
+    measurement = sensor.getDist();
+    //Serial.println(measurement);
+    if (measurement > 14 && measurement < 200) {
+      measurements[measurementsUsed] = measurement;
+      measurementsUsed = measurementsUsed + 1;
+      //Serial.println(measurement);
+    }
     // Wait some time before taking another measurement.
     delay(MEASUREMENTS_DELAY);
   }
-  // Get the average and standard deviation.
-  float average = getAverage(measurements, MEASUREMENTS_TAKEN);
-  float std = getStdDev(measurements, MEASUREMENTS_TAKEN, average);
-  // Only use values that full within twice the standard deviation.
-  for (int i = 0; i < MEASUREMENTS_TAKEN; i++) {
-    // Get distance from sensor
-    if (measurements[i] >= average - std and measurements[i] <= average + std) {
-      total = total + measurements[i];
-      measurementsUsed = measurementsUsed + 1;
+  if (measurementsUsed != 0) {
+    //Serial.println("Filter:");
+    // Reset counter
+    measurementsUsed = 0;
+    // Get the average and standard deviation.
+    float average = getAverage(measurements, MEASUREMENTS_TAKEN);
+    float std = getStdDev(measurements, MEASUREMENTS_TAKEN, average);
+    // Only use values that full within twice the standard deviation.
+    for (int i = 0; i < MEASUREMENTS_TAKEN; i++) {
+      // Get distance from sensor
+      if (measurements[i] >= average - std/2 and measurements[i] <= average + std/2) {
+        total = total + measurements[i];
+        //Serial.println(measurements[i]);
+        measurementsUsed = measurementsUsed + 1;
+      }
     }
-  }
-  //Serial.println(std);
-  // Print the fullness reading to serial.
-  if (measurementsUsed > 0) {
-    Serial.println(total / measurementsUsed);
+    // Determine a value to use
+    if (measurementsUsed > 0) {
+      measurementValueUsed = total / measurementsUsed;
+    } else {
+      // Just in case zero measurements are used.
+      measurementValueUsed = average;
+    }
   } else {
-    // Just in case zero measurements are used.
-    Serial.println(average);
+    measurementValueUsed = 0;
+  }
+  //Serial.print("Value: ");
+  //Serial.println(measurementValueUsed);
+  // Convert to fullness percentage
+  int fullness = 150-(3.3333*measurementValueUsed);
+  // Print the fullness reading to serial.
+  if (fullness > 100) {
+    Serial.println(100);
+  } else if (fullness <0) {
+    Serial.println(0);
+  } else {
+    Serial.println(fullness);
   }
 }
 
