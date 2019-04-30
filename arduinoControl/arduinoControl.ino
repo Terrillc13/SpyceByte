@@ -190,17 +190,7 @@ void getFullness(int jar) {
   //Serial.print("Value: ");
   //Serial.println(measurementValueUsed);
   // Convert to fullness percentage
-  int fullness = 0;
-  if (measurementValueUsed > 50) 
-  {
-    // The voltage has not been supplied
-    fullness = 150-(3.3333*measurementValueUsed);
-  }
-  else
-  {
-    // The voltage has been supplied
-    fullness = 124-(1.1905*measurementValueUsed);
-  }
+  int fullness = 124-(1.1905*measurementValueUsed);
   // Print the fullness reading to serial.
   if (fullness > 100) {
     Serial.println(100);
