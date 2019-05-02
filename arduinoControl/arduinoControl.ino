@@ -11,12 +11,12 @@
 #define RPM 120
 #define MICROSTEPS 16
 #define DISPENCE_DELAY 250
-#define DIR_1 10
-#define STEP_1 2
-#define DIR_2 11
-#define STEP_2 3
-#define DIR_3 12
-#define STEP_3 4
+#define DIR_1 9
+#define STEP_1 12
+#define DIR_2 8
+#define STEP_2 11
+#define DIR_3 7
+#define STEP_3 10
 
 // Analog pin to which the sensor is connected
 const byte jarSensorPin1 = A0;
@@ -64,10 +64,8 @@ void setup() {
    received via the serial
    communication, perform the
    corresponding action.
-
    'd' = doDispense
    's' = getFullness (Sensor)
-
    Format:
    {instruction}{jar}{Optional:Amount}
    doDispense Example: "d112"
@@ -105,7 +103,6 @@ void loop() {
 /*
    Turn the stepper motor specified
    a certain amount of times.
-
    int jar - The jar to dispense from.
    int jar - The amount of times the
              stepper motor will rotate
@@ -129,7 +126,6 @@ void doDispense(int jar, int amount) {
 /*
    Calculate the Fullness and send it
    via the serial connection.
-
    int jar - The jar to get the fullness of.
 */
 void getFullness(int jar) {
@@ -190,7 +186,18 @@ void getFullness(int jar) {
   //Serial.print("Value: ");
   //Serial.println(measurementValueUsed);
   // Convert to fullness percentage
-  int fullness = 124-(1.1905*measurementValueUsed);
+  int fullness = 0;
+  //if (measurementValueUsed > 50) 
+  //{
+    // The voltage has not been supplied
+    //fullness = 150-(3.3333*measurementValueUsed);
+  //}
+  //else
+  //{
+    // The voltage has been supplied
+    //fullness = 124-(1.1905*measurementValueUsed);
+  //}
+  fullness = 125-(0.89*measurementValueUsed);
   // Print the fullness reading to serial.
   if (fullness > 100) {
     Serial.println(100);
@@ -203,11 +210,10 @@ void getFullness(int jar) {
 
 /*
    Get the mean from an array of unsigned ints.
-
    int * val - the array to get the average of.
    arrayCount - the amount of ints in the array.
 */
-float getAverage(int * val, int arrayCount) {
+float getAverage(unsigned int * val, int arrayCount) {
   long total = 0;
   for (int i = 0; i < arrayCount; i++) {
     total = total + val[i];
@@ -218,11 +224,10 @@ float getAverage(int * val, int arrayCount) {
 
 /*
    Get the standard deviation from an array of unsigned ints.
-
    int * val - the array to get the average of.
    arrayCount - the amount of ints in the array.
 */
-float getStdDev(int * val, int arrayCount, float average) {
+float getStdDev(unsigned int * val, int arrayCount, float average) {
   long total = 0;
   for (int i = 0; i < arrayCount; i++) {
     total = total + (val[i] - average) * (val[i] - average);
